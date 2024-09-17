@@ -1,9 +1,11 @@
-import Link from "next/link";
-import { getServerSession } from "next-auth/next";
-import { options } from "@/app/api/auth/[...nextauth]/options";
+"use client";
 
-const Navbar = async () => {
-  const session = await getServerSession(options);
+import React from "react";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
+
+const Navbar = () => {
+  const { data: session } = useSession();
 
   return (
     <div>

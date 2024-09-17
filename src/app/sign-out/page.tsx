@@ -14,6 +14,7 @@ const SignOutPage = async () => {
   return (
     <div>
       Sign out
+      <br />
       <SignOutButton />
     </div>
   );
