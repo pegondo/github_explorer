@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @import "themes/light.css";
+  @import "themes/dark.css";
+}
+
 *,
 *::before,
 *::after {

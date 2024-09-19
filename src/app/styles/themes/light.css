@@ -1,0 +1,8 @@
+html[data-theme="light"] {
+  --primary: #007bff;
+  --secondary: #9ca3af;
+  --buttons: #1d4ed8;
+  --color-typography: #000000;
+  --background: #f3f3f3;
+  --navbar: #0a2472;
+}

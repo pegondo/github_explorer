@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Navbar from "@/components/navigation/Navbar";
-import "./globals.css";
+import "./styles/globals.css";
+import { ThemeProvider } from "next-themes";
 import SessionProvider from "@/components/auth/SessionProvider";
 
 export const metadata: Metadata = {
@@ -16,10 +17,12 @@ type Props = {
 const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en">
-      <body>
+      <body className="text-typography bg-background ">
         <SessionProvider>
-          <Navbar />
-          {children}
+          <ThemeProvider defaultTheme="light">
+            <Navbar />
+            {children}
+          </ThemeProvider>
         </SessionProvider>
       </body>
     </html>
