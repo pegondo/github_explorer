@@ -3,6 +3,7 @@ import axios, { AxiosError } from "axios";
 import { useSession } from "next-auth/react";
 import { ExtendedSession } from "@/app/api/auth/[...nextauth]/options";
 import useGitHubSessionData from "./useGitHubSessionData";
+import { GET_GITHUB_CONTRIBUTIONS } from "@/constants";
 
 const MONTHS = [
   "January",
@@ -68,16 +69,8 @@ const useGitHubStats = (): HookResponse => {
 
     // This API call doesn't use the `useApi` hook because `username`
     // may be `undefined` in some initial renders.
-    axios<ContributionsResponse>(
-      // Source: https://github.com/grubersjoe/github-contributions-api
-      `https://github-contributions-api.jogruber.de/v4/${username}`
-    )
+    axios<ContributionsResponse>(GET_GITHUB_CONTRIBUTIONS(username))
       .then((res) => {
-        console.log("RESRES", {
-          data: res.data,
-          first: new Date(res.data.contributions[0].date).getMonth(),
-        });
-
         const anualContributions = Object.entries(res.data.total).map(
           ([year, numContributions]) => ({
             year,

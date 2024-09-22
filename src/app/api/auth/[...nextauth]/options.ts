@@ -16,6 +16,9 @@ export const options: AuthOptions = {
     signIn: "/sign-in",
     signOut: "/sign-out",
   },
+  session: {
+    strategy: "jwt",
+  },
   callbacks: {
     async jwt({ token, account }) {
       if (account) {

@@ -17,6 +17,11 @@ const Navbar = () => {
               Home
             </Link>
           </li>
+          <li>
+            <Link href="/explore" className="hover:underline">
+              Explore
+            </Link>
+          </li>
           {!session ? (
             <li className="ml-auto">
               <Link href="/sign-in" className="hover:underline">

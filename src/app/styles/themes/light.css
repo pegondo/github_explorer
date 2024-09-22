@@ -5,4 +5,5 @@ html[data-theme="light"] {
   --color-typography: #000000;
   --background: #f3f3f3;
   --navbar: #0a2472;
+  --card: white;
 }

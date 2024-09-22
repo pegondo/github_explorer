@@ -16,6 +16,7 @@ const config: Config = {
         secondary: "var(--secondary)",
         buttons: "var(--buttons)",
         navbar: "var(--navbar)",
+        card: "var(--card)",
       },
       keyframes: {
         "fade-in": {
@@ -30,8 +31,42 @@ const config: Config = {
       animation: {
         fadein: "fade-in 1s ease-in-out 0s 1",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: "typography",
+            h1: {
+              color: "inherit",
+            },
+            h2: {
+              color: "inherit",
+            },
+            h3: {
+              color: "inherit",
+            },
+            h4: {
+              color: "inherit",
+            },
+            h5: {
+              color: "inherit",
+            },
+            h6: {
+              color: "inherit",
+            },
+            a: {
+              color: "inherit",
+            },
+            strong: {
+              color: "inherit",
+            },
+            code: {
+              color: "inherit",
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
 export default config;
