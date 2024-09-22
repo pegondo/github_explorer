@@ -69,6 +69,7 @@ const useGitHubStats = (): HookResponse => {
     // This API call doesn't use the `useApi` hook because `username`
     // may be `undefined` in some initial renders.
     axios<ContributionsResponse>(
+      // Source: https://github.com/grubersjoe/github-contributions-api
       `https://github-contributions-api.jogruber.de/v4/${username}`
     )
       .then((res) => {
