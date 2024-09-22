@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
+import DisplayGitHubStats from "@/components/github/stats/DisplayGitHubStats";
 
 const ProfilePage = async () => {
   const session = await getServerSession(options);
@@ -22,6 +23,8 @@ const ProfilePage = async () => {
         ) : (
           "no image"
         )}
+        <br />
+        <DisplayGitHubStats />
       </div>
     </div>
   );

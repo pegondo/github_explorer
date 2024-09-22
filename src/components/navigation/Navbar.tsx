@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import ThemeButton from "../theme/ThemeButton";
 import { useSession } from "next-auth/react";
 
 const Navbar = () => {
@@ -9,8 +10,8 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="bg-sky-700 p-4">
-        <ul className="flex gap-x-6 text-white">
+      <nav className="bg-navbar p-4">
+        <ul className="flex gap-x-6 items-center text-white">
           <li>
             <Link href="/" className="hover:underline">
               Home
@@ -36,6 +37,9 @@ const Navbar = () => {
               </li>
             </>
           )}
+          <li className="ml-auto">
+            <ThemeButton />
+          </li>
         </ul>
       </nav>
     </div>
