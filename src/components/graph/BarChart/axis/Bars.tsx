@@ -20,7 +20,7 @@ function Bars({ data, height, scaleX, scaleY }: Props) {
           y={scaleY(value)}
           width={scaleX.bandwidth()}
           height={height - scaleY(value)}
-          fill="teal"
+          fill="var(--primary)"
         />
       ))}
     </>
