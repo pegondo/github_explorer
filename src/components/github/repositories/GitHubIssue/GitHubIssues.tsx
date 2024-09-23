@@ -33,7 +33,7 @@ const GitHubIssues = ({ repositoryName, issues }: Props) => (
     <p className="text-s pb-3">
       {repositoryName} has {formatIssuesLength(issues.length)} issues
     </p>
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-4">
       {issues.map(
         (
           { title, number, body, url, state, stateReason, user, assignee },

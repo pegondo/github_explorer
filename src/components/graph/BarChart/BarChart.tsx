@@ -20,13 +20,15 @@ export type Props = {
     bottom: number;
     left: number;
   };
+  isMobile?: boolean;
 };
 
 const BarChart = ({
   data,
   width = 500,
   height = 500,
-  margin = { top: 10, right: 10, bottom: 20, left: 40 },
+  margin = { top: 10, right: 10, bottom: 60, left: 40 },
+  isMobile,
 }: Props) => {
   const effectiveWidth = width - margin.left - margin.right;
   const effectiveHeight = height - margin.top - margin.bottom;
@@ -51,6 +53,7 @@ const BarChart = ({
         <AxisBottom
           scale={xScale}
           transform={`translate(0, ${effectiveHeight})`}
+          isMobile={isMobile}
         />
         <AxisLeft scale={yScale} />
         <Bars

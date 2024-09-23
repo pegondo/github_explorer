@@ -25,7 +25,7 @@ const GitHubReleases = ({ repositoryName, releases }: Props) => (
     <p className="text-s pb-3">
       {repositoryName} has {releases.length} releases
     </p>
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-4">
       {releases.map(
         (
           {
