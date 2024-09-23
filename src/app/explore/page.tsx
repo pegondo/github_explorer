@@ -1,51 +1,22 @@
 import GitHubReleases from "@/components/github/repositories/GitHubRelease/GitHubReleases";
 import { RANDOM_REPOSITORIES } from "@/constants";
-import axios from "axios";
 import { getServerSession } from "next-auth";
 import { ExtendedSession, options } from "../api/auth/[...nextauth]/options";
 import GitHubIssues from "@/components/github/repositories/GitHubIssue/GitHubIssues";
-import { GET_GITHUB_REPO_ISSUES, GET_GITHUB_REPO_RELEASES } from "@/constants";
+import GitHubClient, {
+  Issues,
+  Releases,
+} from "@/services/api/github/GitHubClient";
 
 // TODO: Show a loading screen in the mean time.
-
-type Releases = {
-  tag_name: string;
-  name?: string;
-  body?: string;
-  html_url: string;
-  tarball_url?: string;
-  draft: boolean;
-  prerelease: boolean;
-  author: {
-    name?: string;
-    html_url: string;
-  };
-}[];
-
-type Issues = {
-  title: string;
-  number: number;
-  body?: string;
-  html_url: string;
-  state: "open" | "closed";
-  state_reason?: "completed" | "reopened" | "not_planned";
-  user?: {
-    name?: string;
-    login: string;
-    html_url: string;
-  };
-  assignee?: {
-    name?: string;
-    login: string;
-    html_url: string;
-  };
-}[];
 
 const getRandomRepositoryOfTheDay = () => {
   const today = new Date();
   const day = today.getDate();
   return RANDOM_REPOSITORIES[day % RANDOM_REPOSITORIES.length];
 };
+
+const gitHubClient = new GitHubClient();
 
 const Error = () => (
   <p>Could not get the repository of the day, please, try later.</p>
@@ -62,46 +33,16 @@ const ExplorePage = async () => {
   // Fetch the releases of the repository of the day.
   let releases: Releases;
   try {
-    const config = accessToken
-      ? {
-          headers: {
-            // Authenticated requests have a higher rate limit.
-            // https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      : undefined;
-    const releasesResponse = await axios<Releases>(
-      GET_GITHUB_REPO_RELEASES(repository),
-      config
-    );
-    releases = releasesResponse.data;
+    releases = await gitHubClient.getReleases(repository, accessToken);
   } catch (err) {
     console.error(err);
     return <Error />;
   }
 
   // Fetch the issues of the repository of the day.
-  const issues: Issues = [];
+  let issues: Issues;
   try {
-    // Ask for the first 10 pages of issues.
-    // 10 pages x 100 elements per page = 1000 elements.
-    for (let i = 0; i < 10; i++) {
-      const config = accessToken
-        ? {
-            headers: {
-              // Authenticated requests have a higher rate limit.
-              // https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        : undefined;
-      const releasesResponse = await axios<Issues>(
-        GET_GITHUB_REPO_ISSUES(repository, i + 1),
-        config
-      );
-      issues.push(...releasesResponse.data);
-    }
+    issues = await gitHubClient.getIssues(repository, accessToken, 1000);
   } catch (err) {
     console.error(err);
     return <Error />;

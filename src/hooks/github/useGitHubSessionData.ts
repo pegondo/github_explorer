@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { ExtendedSession } from "@/app/api/auth/[...nextauth]/options";
-import axios, { AxiosError } from "axios";
-import { GET_GITHUB_USER_DATA } from "@/constants";
-
-interface UserResponse {
-  login: string;
-}
+import { AxiosError } from "axios";
+import GitHubClient from "@/services/api/github/GitHubClient";
 
 interface SessionData {
   username: string;
@@ -15,6 +11,8 @@ interface HookResponse {
   data?: SessionData;
   error?: AxiosError;
 }
+
+const gitHubClient = new GitHubClient();
 
 /**
  * Returns some additional GitHub session data from the given session.
@@ -31,14 +29,11 @@ const useGitHubSessionData = (session: ExtendedSession): HookResponse => {
 
     // This API call doesn't use the `useApi` hook because `accessToken` may be
     // `undefined` in some initial renders.
-    axios<UserResponse>(GET_GITHUB_USER_DATA, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    gitHubClient
+      .getUser(accessToken)
       .then((res) => {
         setData({
-          username: res.data.login,
+          username: res.login,
         });
       })
       .catch(setError);

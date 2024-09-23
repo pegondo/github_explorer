@@ -22,13 +22,16 @@ type Props = {
   }[];
 };
 
+const formatIssuesLength = (length: number): string =>
+  length <= 999 ? `${length}` : "+999";
+
 const GitHubIssues = ({ repositoryName, issues }: Props) => (
   <div>
     <h2 className="text-xl pb-2">
       <strong>Issues</strong> of {repositoryName}
     </h2>
     <p className="text-s pb-3">
-      {repositoryName} has {issues.length} issues
+      {repositoryName} has {formatIssuesLength(issues.length)} issues
     </p>
     <div className="grid grid-cols-4 gap-4">
       {issues.map(
