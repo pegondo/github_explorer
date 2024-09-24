@@ -21,6 +21,7 @@ export type Props = {
     left: number;
   };
   isMobile?: boolean;
+  "data-testid"?: string;
 };
 
 const BarChart = ({
@@ -29,6 +30,7 @@ const BarChart = ({
   height = 500,
   margin = { top: 10, right: 10, bottom: 60, left: 40 },
   isMobile,
+  "data-testid": dataTestId,
 }: Props) => {
   const effectiveWidth = width - margin.left - margin.right;
   const effectiveHeight = height - margin.top - margin.bottom;
@@ -48,6 +50,7 @@ const BarChart = ({
     <svg
       width={effectiveWidth + margin.left + margin.right}
       height={effectiveHeight + margin.top + margin.bottom}
+      data-testid={dataTestId}
     >
       <g transform={`translate(${margin.left}, ${margin.top})`}>
         <AxisBottom

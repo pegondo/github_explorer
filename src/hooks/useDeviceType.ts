@@ -1,13 +1,16 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 type DeviceType = "mobile" | "tablet" | "desktop";
 
 type Result = {
   deviceType: DeviceType;
-  width: number;
+  width?: number;
 };
 
-const getDeviceType = (width: number): DeviceType => {
+const getDeviceType = (width?: number): DeviceType => {
+  if (width === undefined) return "desktop";
   switch (true) {
     case width < 768:
       return "mobile";
@@ -19,16 +22,16 @@ const getDeviceType = (width: number): DeviceType => {
 };
 
 const useDeviceType = (): Result => {
-  const [width, setWidth] = useState(window?.innerWidth);
+  const [width, setWidth] = useState<number>();
 
   const handleWindowSizeChange = () => {
-    setWidth(window.innerWidth);
+    setWidth(window?.innerWidth);
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleWindowSizeChange);
+    window?.addEventListener("resize", handleWindowSizeChange);
     return () => {
-      window.removeEventListener("resize", handleWindowSizeChange);
+      window?.removeEventListener("resize", handleWindowSizeChange);
     };
   }, []);
 

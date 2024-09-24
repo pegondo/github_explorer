@@ -36,7 +36,7 @@ const Card = ({
   user,
   assignee,
 }: Props) => (
-  <CommonCard>
+  <CommonCard data-testid="github-issues-card">
     <div>
       <a href={url} target="_blank">
         <h5 className="mb-2 text-2xl font-semibold tracking-tight ">

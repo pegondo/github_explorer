@@ -9,7 +9,8 @@ const ProfilePage = async () => {
   return (
     <div>
       <div>
-        Name: {session?.user?.name || "unknown"}
+        Name:{" "}
+        <span data-testid="username">{session?.user?.name || "unknown"}</span>
         <br />
         Profile image:
         {session?.user?.image ? (
@@ -19,6 +20,7 @@ const ProfilePage = async () => {
             height={200}
             alt={`Profile Pic for ${session.user.name}`}
             priority={true}
+            data-testid="user-image"
           />
         ) : (
           "no image"

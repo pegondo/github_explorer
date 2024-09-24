@@ -13,7 +13,7 @@ const Navbar = () => {
       <nav className="bg-navbar p-4">
         <ul className="flex gap-x-6 items-center text-white">
           <li>
-            <Link href="/" className="hover:underline">
+            <Link href="/" className="hover:underline" data-testid="home">
               Home
             </Link>
           </li>

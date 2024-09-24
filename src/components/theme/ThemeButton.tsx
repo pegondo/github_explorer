@@ -24,6 +24,7 @@ const ThemeButton = () => {
       alt={theme}
       width={30}
       height={30}
+      data-testid="change-theme"
     />
   );
 };

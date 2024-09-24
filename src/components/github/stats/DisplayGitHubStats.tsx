@@ -30,6 +30,7 @@ const DisplayGitHubStats = () => {
             value: numContributions,
           }))}
           width={isMobile ? width : 500}
+          data-testid="year-interactions-chart"
         />
       </div>
       <div>
@@ -43,6 +44,7 @@ const DisplayGitHubStats = () => {
           )}
           width={isMobile ? width : 900}
           isMobile={isMobile}
+          data-testid="month-interactions-chart"
         />
       </div>
     </div>
