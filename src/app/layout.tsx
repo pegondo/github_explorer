@@ -6,8 +6,8 @@ import { ThemeProvider } from "next-themes";
 import SessionProvider from "@/components/auth/SessionProvider";
 
 export const metadata: Metadata = {
-  description: "Simple user management application for a technical test",
-  title: "Technical Test",
+  description: "Simple application to explore GitHub",
+  title: "GitHub explorer",
 };
 
 type Props = {
