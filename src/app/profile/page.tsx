@@ -7,7 +7,7 @@ const ProfilePage = async () => {
   const session = await getServerSession(options);
 
   return (
-    <div>
+    <div data-testid="profile-page">
       <div>
         Name:{" "}
         <span data-testid="username">{session?.user?.name || "unknown"}</span>

@@ -12,7 +12,7 @@ const SignInPage = async () => {
   }
 
   return (
-    <div>
+    <div data-testid="sign-in-page">
       Sign in
       <br />
       <SignInButton />

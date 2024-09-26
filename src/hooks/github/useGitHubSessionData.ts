@@ -7,7 +7,7 @@ interface SessionData {
   username: string;
 }
 
-interface HookResponse {
+export interface HookResponse {
   data?: SessionData;
   error?: AxiosError;
 }

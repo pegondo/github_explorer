@@ -8,9 +8,16 @@ type Props = {
   height: number;
   scaleX: AxisBottomProps["scale"];
   scaleY: AxisLeftProps["scale"];
+  "data-testid"?: string;
 };
 
-function Bars({ data, height, scaleX, scaleY }: Props) {
+function Bars({
+  data,
+  height,
+  scaleX,
+  scaleY,
+  "data-testid": dataTestId,
+}: Props) {
   return (
     <>
       {data.map(({ key, value }) => (
@@ -21,6 +28,7 @@ function Bars({ data, height, scaleX, scaleY }: Props) {
           width={scaleX.bandwidth()}
           height={height - scaleY(value)}
           fill="var(--primary)"
+          data-testid={dataTestId}
         />
       ))}
     </>

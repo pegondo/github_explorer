@@ -12,7 +12,7 @@ const SignOutPage = async () => {
   }
 
   return (
-    <div>
+    <div data-testid="sign-out-page">
       Sign out
       <br />
       <SignOutButton />

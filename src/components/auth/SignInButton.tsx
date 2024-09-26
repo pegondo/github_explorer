@@ -1,20 +1,16 @@
 "use client";
 
 import { signIn } from "next-auth/react";
+import Button from "../button/Button";
 
 const SignInButton = () => {
   const onSignIn = async () =>
     await signIn("github", { callbackUrl: "/profile" });
 
   return (
-    <button
-      className="bg-slate-500 px-6 py-2 text-white"
-      onClick={onSignIn}
-      type="button"
-      data-testid="sign-in"
-    >
+    <Button onClick={onSignIn} data-testid="sign-in">
       Sign In With GitHub
-    </button>
+    </Button>
   );
 };
 

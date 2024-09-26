@@ -19,7 +19,7 @@ const numberOfLines = (str: string): number => str.split(/\r\n|\r|\n/).length;
  */
 export const bodyTooLong = (body: string): boolean => numberOfLines(body) > 6;
 
-type Props = {
+export type Props = {
   tagName: string;
   name?: string;
   body?: string;
@@ -45,16 +45,22 @@ const Card = ({
 }: Props) => (
   <CommonCard data-testid="github-releases-card">
     <div>
-      <a href={url} target="_blank">
-        <h5 className="mb-2 text-2xl font-semibold tracking-tight ">
+      <a href={url} target="_blank" data-testid="github-releases-card-url">
+        <h5
+          className="mb-2 text-2xl font-semibold tracking-tight"
+          data-testid="github-releases-card-name"
+        >
           {name || "Unnamed release"}
         </h5>
       </a>
-      <p className="mb-3 text-opacity-75">
+      <p
+        className="mb-3 text-opacity-75"
+        data-testid="github-releases-card-tag"
+      >
         <strong>Tag:</strong> {tagName}
       </p>
       {body && (
-        <div>
+        <div data-testid="github-releases-card-body">
           <div className="line-clamp-6 pb-2">
             <div className="prose">
               <ReactMarkdown rehypePlugins={[rehypeRaw]} skipHtml={false}>
@@ -74,14 +80,14 @@ const Card = ({
         </div>
       )}
       {isDraft && (
-        <div>
+        <div data-testid="github-releases-card-is-draft-icon">
           <div className="pt-2 inline-flex gap-2">
             Draft <Pencil width={25} height={25} />
           </div>
         </div>
       )}
       {isPrerelease && (
-        <div>
+        <div data-testid="github-releases-card-is-pre-release-icon">
           <div className="inline-flex gap-2">
             Pre-release <Rocket width={25} height={25} />
           </div>
@@ -91,13 +97,19 @@ const Card = ({
         <a
           href={tarballUrl}
           className="inline-flex gap-2 font-medium items-center text-blue-600 hover:underline"
+          data-testid="github-releases-card-tarball-url"
         >
           Download <DownloadIcon width={25} height={25} />
         </a>
       )}
       {author?.name && (
         <div>
-          <a href={author.url} target="_blank" className="text-s">
+          <a
+            href={author.url}
+            target="_blank"
+            className="text-s"
+            data-testid="github-releases-card-author"
+          >
             By{" "}
             <span className="text-blue-600 hover:underline">{author.name}</span>
           </a>

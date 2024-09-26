@@ -1,5 +1,5 @@
-type Props = {
-  children: JSX.Element;
+export type Props = {
+  children: React.ReactNode;
   "data-testid"?: string;
 };
 

@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-type Props = {
+export type Props = {
   repositoryName: string;
   releases: {
     tagName: string;
@@ -18,11 +18,11 @@ type Props = {
 };
 
 const GitHubReleases = ({ repositoryName, releases }: Props) => (
-  <div>
-    <h2 className="text-xl pb-2">
+  <div data-testid="github-releases">
+    <h2 className="text-xl pb-2" data-testid="github-releases-header">
       <strong>Releases</strong> of {repositoryName}
     </h2>
-    <p className="text-s pb-3">
+    <p className="text-s pb-3" data-testid="github-releases-counter">
       {repositoryName} has {releases.length} releases
     </p>
     <div className="grid gap-4 grid-cols-1 md:grid-cols-4">

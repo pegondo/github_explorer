@@ -57,13 +57,15 @@ const BarChart = ({
           scale={xScale}
           transform={`translate(0, ${effectiveHeight})`}
           isMobile={isMobile}
+          data-testid="bar-chart-axis-bottom"
         />
-        <AxisLeft scale={yScale} />
+        <AxisLeft scale={yScale} data-testid="bar-chart-axis-left" />
         <Bars
           data={data}
           height={effectiveHeight}
           scaleX={xScale}
           scaleY={yScale}
+          data-testid="bar-chart-bars"
         />
       </g>
     </svg>

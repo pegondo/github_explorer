@@ -22,7 +22,9 @@ const getDeviceType = (width?: number): DeviceType => {
 };
 
 const useDeviceType = (): Result => {
-  const [width, setWidth] = useState<number>();
+  const [width, setWidth] = useState<number | undefined>(
+    typeof window !== "undefined" ? window?.innerWidth : undefined
+  );
 
   const handleWindowSizeChange = () => {
     setWidth(window?.innerWidth);

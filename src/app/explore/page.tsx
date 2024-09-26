@@ -10,7 +10,7 @@ import GitHubClient, {
 
 // TODO: Show a loading screen in the mean time.
 
-const getRandomRepositoryOfTheDay = () => {
+export const getRandomRepositoryOfTheDay = () => {
   const today = new Date();
   const day = today.getDate();
   return RANDOM_REPOSITORIES[day % RANDOM_REPOSITORIES.length];
@@ -19,7 +19,9 @@ const getRandomRepositoryOfTheDay = () => {
 const gitHubClient = new GitHubClient();
 
 const Error = () => (
-  <p>Could not get the repository of the day, please, try later.</p>
+  <p data-testid="github-client-error">
+    Could not get the repository of the day, please, try later.
+  </p>
 );
 
 const ExplorePage = async () => {
@@ -49,8 +51,8 @@ const ExplorePage = async () => {
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl pb-4">
+    <div className="p-4" data-testid="explore-page">
+      <h1 className="text-2xl pb-4" data-testid="repo-otd-header">
         The random repository of the day is{" "}
         <a
           href={`https://github.com/${repository}`}

@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-type Props = {
+export type Props = {
   repositoryName: string;
   issues: {
     title: string;
@@ -26,11 +26,11 @@ const formatIssuesLength = (length: number): string =>
   length <= 999 ? `${length}` : "+999";
 
 const GitHubIssues = ({ repositoryName, issues }: Props) => (
-  <div>
-    <h2 className="text-xl pb-2">
+  <div data-testid="github-issues">
+    <h2 className="text-xl pb-2" data-testid="github-issues-header">
       <strong>Issues</strong> of {repositoryName}
     </h2>
-    <p className="text-s pb-3">
+    <p className="text-s pb-3" data-testid="github-issues-counter">
       {repositoryName} has {formatIssuesLength(issues.length)} issues
     </p>
     <div className="grid gap-4 grid-cols-1 md:grid-cols-4">

@@ -5,7 +5,7 @@ import { ExtendedSession } from "@/app/api/auth/[...nextauth]/options";
 import useGitHubSessionData from "./useGitHubSessionData";
 import { GET_GITHUB_CONTRIBUTIONS } from "@/constants";
 
-const MONTHS = [
+export const MONTHS = [
   "January",
   "February",
   "March",
@@ -50,6 +50,29 @@ interface GitHubStats {
   monthContributions: { [key: string]: number };
 }
 
+export const apiResponseToStats = (
+  response: ContributionsResponse
+): GitHubStats => {
+  const anualContributions = Object.entries(response.total).map(
+    ([year, numContributions]) => ({
+      year,
+      numContributions,
+    })
+  );
+  const monthContributions: { [key: string]: number } = {};
+  response.contributions.forEach(({ date, count }) => {
+    const dateDate = new Date(date);
+    if (dateDate.getFullYear() !== CURRENT_YEAR) return;
+
+    const month = MONTHS[dateDate.getMonth()];
+    const prevNumContributions =
+      month in monthContributions ? monthContributions[month] : 0;
+    monthContributions[month] = prevNumContributions + count;
+  });
+
+  return { anualContributions, monthContributions };
+};
+
 interface HookResponse {
   data?: GitHubStats;
   error?: AxiosError;
@@ -71,25 +94,8 @@ const useGitHubStats = (): HookResponse => {
     // may be `undefined` in some initial renders.
     axios<ContributionsResponse>(GET_GITHUB_CONTRIBUTIONS(username))
       .then((res) => {
-        const anualContributions = Object.entries(res.data.total).map(
-          ([year, numContributions]) => ({
-            year,
-            numContributions,
-          })
-        );
-
-        const monthContributions: { [key: string]: number } = {};
-        res.data.contributions.forEach(({ date, count }) => {
-          const dateDate = new Date(date);
-          if (dateDate.getFullYear() !== CURRENT_YEAR) return;
-
-          const month = MONTHS[dateDate.getMonth()];
-          const prevNumContributions =
-            month in monthContributions ? monthContributions[month] : 0;
-          monthContributions[month] = prevNumContributions + count;
-        });
-
-        setStats({ anualContributions, monthContributions });
+        const stats = apiResponseToStats(res.data);
+        setStats(stats);
       })
       .catch(setError);
   }, [session, sessionData?.username]);

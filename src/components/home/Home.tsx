@@ -20,8 +20,8 @@ const Home = () => {
   }, [router]);
 
   return (
-    <div>
-      <h1>Home Page</h1>
+    <div data-testid="home-component">
+      <h1 data-testid="home-page-header">Home Page</h1>
     </div>
   );
 };

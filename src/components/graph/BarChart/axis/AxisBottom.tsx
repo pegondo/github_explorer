@@ -7,9 +7,15 @@ export type Props = {
   scale: d3.ScaleBand<string>;
   transform: string;
   isMobile?: boolean;
+  "data-testid"?: string;
 };
 
-const AxisBottom = ({ scale, transform, isMobile }: Props) => {
+const AxisBottom = ({
+  scale,
+  transform,
+  isMobile,
+  "data-testid": dataTestId,
+}: Props) => {
   const ref = useRef<SVGGElement>(null);
 
   useEffect(() => {
@@ -27,7 +33,7 @@ const AxisBottom = ({ scale, transform, isMobile }: Props) => {
     }
   }, [scale, isMobile]);
 
-  return <g ref={ref} transform={transform} />;
+  return <g ref={ref} transform={transform} data-testid={dataTestId} />;
 };
 
 export default AxisBottom;

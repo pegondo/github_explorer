@@ -16,13 +16,17 @@ const DisplayGitHubStats = () => {
   const { deviceType, width } = useDeviceType();
   const isMobile = deviceType === "mobile";
 
-  if (error || !stats) {
-    return <p>Stats unavailable, please try later.</p>;
+  if (!!error || !stats) {
+    return (
+      <div data-testid="display-github-stats-error">
+        <p>Stats unavailable, please try later.</p>
+      </div>
+    );
   }
 
   return (
-    <div className="md:flex md:gap-10">
-      <div className="shrink-0">
+    <div className="md:flex md:gap-10" data-testid="display-github-stats">
+      <div className="shrink-0" data-testid="display-github-stats-year">
         <p className="pl-5">Interactions per year</p>
         <BarChart
           data={stats.anualContributions.map(({ year, numContributions }) => ({
@@ -33,7 +37,7 @@ const DisplayGitHubStats = () => {
           data-testid="year-interactions-chart"
         />
       </div>
-      <div>
+      <div data-testid="display-github-stats-month">
         <p className="pl-5">Interactions per month in {CURRENT_YEAR}</p>
         <BarChart
           data={Object.entries(stats.monthContributions).map(

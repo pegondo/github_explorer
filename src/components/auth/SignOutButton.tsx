@@ -1,19 +1,15 @@
 "use client";
 
 import { signOut } from "next-auth/react";
+import Button from "../button/Button";
 
 const SignOutButton = () => {
   const onSignOut = async () => await signOut({ callbackUrl: "/" });
 
   return (
-    <button
-      className="bg-slate-500 px-6 py-2 text-white"
-      onClick={onSignOut}
-      type="button"
-      data-testid="sign-out"
-    >
+    <Button onClick={onSignOut} data-testid="sign-out">
       Sign Out of GitHub
-    </button>
+    </Button>
   );
 };
 
