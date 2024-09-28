@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { options } from "../api/auth/[...nextauth]/options";
 import SignOutButton from "@/components/auth/SignOutButton";
+import Card from "@/components/card/Card";
 
 const SignOutPage = async () => {
   const session = await getServerSession(options);
@@ -12,10 +13,16 @@ const SignOutPage = async () => {
   }
 
   return (
-    <div data-testid="sign-out-page">
-      Sign out
-      <br />
-      <SignOutButton />
+    <div className="flex justify-center pt-6" data-testid="sign-out-page">
+      <div className="w-6/12">
+        <Card>
+          <div className="flex flex-col justify-center gap-4">
+            Sign out
+            <br />
+            <SignOutButton />
+          </div>
+        </Card>
+      </div>
     </div>
   );
 };

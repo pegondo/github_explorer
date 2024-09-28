@@ -9,7 +9,7 @@ const SignInButton = () => {
 
   return (
     <Button onClick={onSignIn} data-testid="sign-in">
-      Sign In With GitHub
+      Sign In using GitHub
     </Button>
   );
 };

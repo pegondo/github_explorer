@@ -8,7 +8,7 @@ const SignOutButton = () => {
 
   return (
     <Button onClick={onSignOut} data-testid="sign-out">
-      Sign Out of GitHub
+      Sign Out
     </Button>
   );
 };
