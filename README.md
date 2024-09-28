@@ -43,6 +43,40 @@ And access [http://localhost:3000](http://localhost:3000) with your browser to s
 
 You can access the user manual in [/docs/user_manual](/docs/user_manual.md).
 
+## Tests
+
+This application has unit and end-to-end tests.
+
+### Unit tests
+
+You can run the unit tests with
+
+```bash
+npm run test
+```
+
+### End-to-end tests
+
+To run the unit tests, you have to first run the application. You can do it with:
+
+```bash
+npm run dev
+```
+
+**Note**: it is recommended by cypress to run your e2e tests using the dev mode. More info [here](https://docs.cypress.io/guides/getting-started/opening-the-app).
+
+Then, you can run the cypress client with:
+
+```bash
+npm run cy:open
+```
+
+Or run the e2e tests using Chrome with:
+
+```bash
+npm run e2e:chrome
+```
+
 ## Architecture
 
 The application is structured following the standards for `app` Next.js architectures.
