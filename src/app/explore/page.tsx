@@ -1,5 +1,4 @@
 import GitHubReleases from "@/components/github/repositories/GitHubRelease/GitHubReleases";
-import { RANDOM_REPOSITORIES } from "@/constants";
 import { getServerSession } from "next-auth";
 import { ExtendedSession, options } from "../api/auth/[...nextauth]/options";
 import GitHubIssues from "@/components/github/repositories/GitHubIssue/GitHubIssues";
@@ -7,14 +6,9 @@ import GitHubClient, {
   Issues,
   Releases,
 } from "@/services/api/github/GitHubClient";
+import { getRandomRepositoryOfTheDay } from "@/services/github/repositories";
 
 // TODO: Show a loading screen in the mean time.
-
-export const getRandomRepositoryOfTheDay = () => {
-  const today = new Date();
-  const day = today.getDate();
-  return RANDOM_REPOSITORIES[day % RANDOM_REPOSITORIES.length];
-};
 
 const gitHubClient = new GitHubClient();
 

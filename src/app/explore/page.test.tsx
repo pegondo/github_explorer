@@ -1,7 +1,8 @@
 import "@testing-library/jest-dom";
 import { expect } from "@jest/globals";
 import { render, screen } from "@testing-library/react";
-import ExplorePage, { getRandomRepositoryOfTheDay } from "./page";
+import ExplorePage from "./page";
+import { getRandomRepositoryOfTheDay } from "@/services/github/repositories";
 
 import GitHubClient, {
   Issues,
