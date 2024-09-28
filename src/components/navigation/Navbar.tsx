@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import ThemeButton from "../theme/ThemeButton";
 import { useSession } from "next-auth/react";
@@ -17,34 +18,49 @@ const Navbar = () => {
               Home
             </Link>
           </li>
+          {session && (
+            <li data-testid="li-profile">
+              <div className="flex flex-row gap-2">
+                <Link href="/profile" className="hover:underline">
+                  Profile
+                </Link>
+                {session?.user?.image && (
+                  <Image
+                    className="rounded-full"
+                    src={session.user.image}
+                    width={20}
+                    height={20}
+                    alt={`Profile Pic for ${session?.user?.name}`}
+                    priority={true}
+                    data-testid="user-image"
+                  />
+                )}
+              </div>
+            </li>
+          )}
           <li data-testid="li-explore">
             <Link href="/explore" className="hover:underline">
               Explore
             </Link>
           </li>
-          {!session ? (
-            <li className="ml-auto" data-testid="li-sign-in">
-              <Link href="/sign-in" className="hover:underline">
-                Sign In
-              </Link>
-            </li>
-          ) : (
-            <>
-              <li data-testid="li-profile">
-                <Link href="/profile" className="hover:underline">
-                  Profile
+          <div className="flex items-center gap-x-6 ml-auto">
+            {!session ? (
+              <li data-testid="li-sign-in">
+                <Link href="/sign-in" className="hover:underline">
+                  Sign In
                 </Link>
               </li>
-              <li className="ml-auto" data-testid="li-sign-out">
+            ) : (
+              <li data-testid="li-sign-out">
                 <Link href="/sign-out" className="hover:underline">
                   Sign Out
                 </Link>
               </li>
-            </>
-          )}
-          <li className="ml-auto" data-testid="li-theme">
-            <ThemeButton />
-          </li>
+            )}
+            <li data-testid="li-theme">
+              <ThemeButton />
+            </li>
+          </div>
         </ul>
       </nav>
     </div>

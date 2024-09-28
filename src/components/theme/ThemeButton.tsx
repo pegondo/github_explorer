@@ -17,6 +17,7 @@ const ThemeButton = () => {
   // TODO: Fix this.
   if (!theme) return null;
 
+  // TODO: Improve this animation.
   return (
     <Icon
       onClick={toogleTheme}

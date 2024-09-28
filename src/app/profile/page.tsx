@@ -29,7 +29,7 @@ const ProfilePage = async () => {
                       Your fancy <strong>profile picture</strong> is
                     </p>
                     <Image
-                      src={session?.user?.image}
+                      src={session.user.image}
                       width={200}
                       height={200}
                       alt={`Profile Pic for ${session?.user?.name}`}
