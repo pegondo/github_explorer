@@ -12,7 +12,13 @@ You can visit the fully deployed application at TODO: Add link.
 
 If you prefer to run the project locally to contribute to it or just take a look, you can also do so.
 
-First, install the dependencies:
+First, set up the environment variables. You have to set up the following environment variables in your `.env` or `.env.local` file. Here is a list with a description for every variable needed:
+
+- `NEXTAUTH_SECRET` is the secret [the NextAuth library](https://next-auth.js.org/) uses to manage the authentication. Is is used to encrypt the JWT, hash emails... More information in [here](https://next-auth.js.org/configuration/options#nextauth_secret). You can generate one by running `npx auth secret` in the root of this project.
+- `GITHUB_SECRET` is the OAuth secret GitHub requires as an OAuth provider. More information [here](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps). You can generate one in [here](https://github.com/settings/applications/new).
+- `GITHUB_ID` is the OAuth application ID GitHub requires as an OAuth provider. More information [here](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps). You can generate one in [here](https://github.com/settings/applications/new).
+
+Then, install the dependencies:
 
 ```bash
 npm i
