@@ -4,6 +4,7 @@ import React from "react";
 import useGitHubStats from "@/hooks/github/useGitHubStats";
 import BarChart from "../../graph/BarChart/BarChart";
 import useDeviceType from "@/hooks/useDeviceType";
+import Card from "@/components/card/Card";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -25,33 +26,42 @@ const DisplayGitHubStats = () => {
   }
 
   return (
-    <div className="md:flex md:gap-10" data-testid="display-github-stats">
-      <div className="shrink-0" data-testid="display-github-stats-year">
-        <p className="pl-5">Interactions per year</p>
-        <BarChart
-          data={stats.anualContributions.map(({ year, numContributions }) => ({
-            key: year,
-            value: numContributions,
-          }))}
-          width={isMobile ? width : 500}
-          data-testid="year-interactions-chart"
-        />
+    <Card>
+      <div
+        className="md:flex md:gap-12 md:justify-center"
+        data-testid="display-github-stats"
+      >
+        <div className="shrink-0" data-testid="display-github-stats-year">
+          <p className="text-xl pl-5">Interactions per year</p>
+          <BarChart
+            data={stats.anualContributions.map(
+              ({ year, numContributions }) => ({
+                key: year,
+                value: numContributions,
+              })
+            )}
+            width={isMobile ? (width ? width - 80 : undefined) : 500}
+            data-testid="year-interactions-chart"
+          />
+        </div>
+        <div data-testid="display-github-stats-month">
+          <p className="text-xl pl-5">
+            Interactions per month in {CURRENT_YEAR}
+          </p>
+          <BarChart
+            data={Object.entries(stats.monthContributions).map(
+              ([month, numContributions]) => ({
+                key: month,
+                value: numContributions,
+              })
+            )}
+            width={isMobile ? (width ? width - 80 : undefined) : 900}
+            isMobile={isMobile}
+            data-testid="month-interactions-chart"
+          />
+        </div>
       </div>
-      <div data-testid="display-github-stats-month">
-        <p className="pl-5">Interactions per month in {CURRENT_YEAR}</p>
-        <BarChart
-          data={Object.entries(stats.monthContributions).map(
-            ([month, numContributions]) => ({
-              key: month,
-              value: numContributions,
-            })
-          )}
-          width={isMobile ? width : 900}
-          isMobile={isMobile}
-          data-testid="month-interactions-chart"
-        />
-      </div>
-    </div>
+    </Card>
   );
 };
 

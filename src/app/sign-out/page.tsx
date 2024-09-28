@@ -17,7 +17,7 @@ const SignOutPage = async () => {
       <div className="w-6/12">
         <Card>
           <div className="flex flex-col justify-center gap-4">
-            Sign out
+            See you soon!
             <br />
             <SignOutButton />
           </div>

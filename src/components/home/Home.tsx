@@ -42,7 +42,7 @@ const Home = () => {
         There are two things to do here, you can see your activity in GitHub or
         explore some interesting and wide-used GitHub projects!
       </p>
-      <div className="flex flex-col md:flex-row gap-4 pl-2 pr-2 pt-4">
+      <div className="flex flex-col md:flex-row gap-4 px-2 pt-4">
         <Card>
           <div data-testid="home-activity-card">
             <h2 className="text-xl pb-2">Your GitHub activity</h2>

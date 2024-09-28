@@ -22,10 +22,7 @@ const Loading = ({ tooLongToLoadTime }: Props) => {
   }, [isMobile, tooLongToLoadTime]);
 
   return (
-    <div
-      className="pt-10 pl-5 pr-5 flex flex-col"
-      data-testid="loading-component"
-    >
+    <div className="pt-10 px-5 flex flex-col" data-testid="loading-component">
       <div className="flex justify-center" data-testid="loading-spinner">
         <SpinnerIcon width={40} height={40} />
       </div>

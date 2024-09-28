@@ -48,8 +48,9 @@ describe("The Profile page", () => {
     const element = screen.getByTestId("profile-page");
     const userName = screen.getByTestId("username");
     const userImage = screen.queryByTestId("user-image");
+    const noImageMessage = screen.queryByTestId("no-user-image-message");
 
-    return { element, userName, userImage };
+    return { element, userName, userImage, noImageMessage };
   };
 
   beforeEach(() => {
@@ -93,21 +94,22 @@ describe("The Profile page", () => {
     expect(userImage).toBeInTheDocument();
   });
 
-  it("should render the user name unknown if the session doesn't provide it", async () => {
+  it("should render the user name unknown user if the session doesn't provide it", async () => {
     mockUseSession();
     mockUseServerSession(false, true);
 
     const { userName } = await setup();
 
-    expect(userName.textContent).toContain("unknown");
+    expect(userName.textContent).toContain("unknown user");
   });
 
-  it("shouldn't render the user image if the session doesn't provide it", async () => {
+  it("shouldn't render the user image but a message if the session doesn't provide it", async () => {
     mockUseSession();
     mockUseServerSession(true, false);
 
-    const { userImage } = await setup();
+    const { userImage, noImageMessage } = await setup();
 
     expect(userImage).not.toBeInTheDocument();
+    expect(noImageMessage).toBeInTheDocument();
   });
 });
