@@ -1,8 +1,6 @@
 import type { Config } from "jest";
 import nextJest from "next/jest.js";
 
-// TODO: Remove the warnings from the tests.
-
 const createJestConfig = nextJest({
   dir: ".",
 });

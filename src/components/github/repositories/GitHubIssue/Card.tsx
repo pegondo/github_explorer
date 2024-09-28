@@ -5,8 +5,6 @@ import { bodyTooLong } from "../GitHubRelease/Card";
 import Open from "../../../../../public/icons/open";
 import Closed from "../../../../../public/icons/closed";
 
-// TODO: Consider moving some common code together.
-
 export type Props = {
   title: string;
   number: number;

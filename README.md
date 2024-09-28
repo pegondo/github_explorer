@@ -4,9 +4,9 @@ GitHub explorer is a GitHub-OAuth based dashboard for viewing popular public rep
 
 ## Getting Started
 
-### Visit TODO: Add link
+### Visit https://github-explorer-five-ivory.vercel.app/
 
-You can visit the fully deployed application at TODO: Add link.
+You can visit the fully deployed application at https://github-explorer-five-ivory.vercel.app/
 
 ### Run locally
 

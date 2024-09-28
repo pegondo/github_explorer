@@ -22,7 +22,6 @@ describe("The Sign Out page", () => {
     // only solution I found.
     cy.visit("/sign-out").wait(1000);
 
-    // TODO: Fix this flaky click.
     cy.get('[data-testid="sign-out"]').click();
 
     // The URL should be `/`.

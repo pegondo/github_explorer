@@ -8,8 +8,6 @@ import GitHubClient, {
 } from "@/services/api/github/GitHubClient";
 import { getRandomRepositoryOfTheDay } from "@/services/github/repositories";
 
-// TODO: Show a loading screen in the mean time.
-
 const gitHubClient = new GitHubClient();
 
 const Error = () => (

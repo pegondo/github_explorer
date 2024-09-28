@@ -14,19 +14,19 @@ const ThemeButton = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  // TODO: Fix this.
   if (!theme) return null;
 
-  // TODO: Improve this animation.
   return (
-    <Icon
-      onClick={toogleTheme}
-      className="cursor-pointer animate-fadein"
-      alt={theme}
-      width={30}
-      height={30}
-      data-testid="change-theme"
-    />
+    <div>
+      <Icon
+        onClick={toogleTheme}
+        className="cursor-pointer hover:animate-bounce"
+        alt={theme}
+        width={30}
+        height={30}
+        data-testid="change-theme"
+      />
+    </div>
   );
 };
 

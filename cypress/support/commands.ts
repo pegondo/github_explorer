@@ -16,7 +16,6 @@ Cypress.Commands.add(
         // only solution I found.
         cy.visit("/sign-in").wait(1000);
 
-        // TODO: Fix this flaky click.
         cy.get("[data-testid='sign-in']").trigger("click");
 
         cy.origin(
