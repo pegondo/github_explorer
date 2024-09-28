@@ -8,7 +8,7 @@ export type Props = {
 
 const Button = ({ onClick, children, "data-testid": dataTestId }: Props) => (
   <button
-    className="bg-slate-500 px-6 py-2 text-white"
+    className="bg-primary px-6 py-2 text-white rounded-md"
     onClick={onClick}
     type="button"
     data-testid={dataTestId}

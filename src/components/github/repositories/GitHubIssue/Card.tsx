@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import CommonCard from "../Card";
+import CommonCard from "../../../card/Card";
 import { bodyTooLong } from "../GitHubRelease/Card";
 import Open from "../../../../../public/icons/open";
 import Closed from "../../../../../public/icons/closed";

@@ -3,7 +3,7 @@ import Pencil from "../../../../../public/icons/pencil";
 import Rocket from "../../../../../public/icons/rocket";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import CommonCard from "../Card";
+import CommonCard from "../../../card/Card";
 
 /**
  * Returns the number of lines a string.

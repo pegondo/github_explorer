@@ -17,7 +17,6 @@ const Loading = ({ tooLongToLoadTime }: Props) => {
     if (!isMobile || !tooLongToLoadTime) return;
 
     setTimeout(() => {
-      console.error("timedout");
       setShowConsiderLaptop(true);
     }, tooLongToLoadTime);
   }, [isMobile, tooLongToLoadTime]);
