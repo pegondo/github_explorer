@@ -29,7 +29,6 @@ const ExplorePage = async () => {
   try {
     releases = await gitHubClient.getReleases(repository, accessToken);
   } catch (err) {
-    console.error(err);
     return <Error />;
   }
 
@@ -38,7 +37,6 @@ const ExplorePage = async () => {
   try {
     issues = await gitHubClient.getIssues(repository, accessToken, 1000);
   } catch (err) {
-    console.error(err);
     return <Error />;
   }
 

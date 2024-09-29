@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { expect } from "@jest/globals";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import ThemeButton from "./ThemeButton";
 
 // Mock useTheme
@@ -15,10 +15,13 @@ describe("<ThemeButton />", () => {
     return screen.queryByTestId("change-theme");
   };
 
-  const mockUseTheme = (theme: "light" | "dark" | undefined) => {
+  const mockUseTheme = (
+    theme: "light" | "dark" | undefined,
+    setTheme: () => void = () => {}
+  ) => {
     useThemeMock.mockReturnValue({
       theme,
-      setTheme: () => {},
+      setTheme,
     });
   };
 
@@ -42,14 +45,17 @@ describe("<ThemeButton />", () => {
     expect(element).not.toBeInTheDocument();
   });
 
-  it("should call setTheme when clicked", () => {
-    mockUseTheme("light");
+  it("should call setTheme when clicked", async () => {
+    const setThemeMock = jest.fn();
+    mockUseTheme("light", setThemeMock);
 
     const element = setup();
 
     expect(element).not.toBeNull();
     fireEvent.click(element!);
 
-    expect(useThemeMock).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      expect(setThemeMock).toHaveBeenCalledTimes(1);
+    });
   });
 });
