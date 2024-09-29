@@ -28,7 +28,7 @@ const DisplayGitHubStats = () => {
   return (
     <Card>
       <div
-        className="md:flex md:gap-12 md:justify-center"
+        className="2xl:flex 2xl:gap-12 2xl:justify-center"
         data-testid="display-github-stats"
       >
         <div className="shrink-0" data-testid="display-github-stats-year">
@@ -44,7 +44,7 @@ const DisplayGitHubStats = () => {
             data-testid="year-interactions-chart"
           />
         </div>
-        <div data-testid="display-github-stats-month">
+        <div className="shrink-0" data-testid="display-github-stats-month">
           <p className="text-xl pl-5">
             Interactions per month in {CURRENT_YEAR}
           </p>
