@@ -1,6 +1,14 @@
 const USERNAME = Cypress.env("username");
 const PASSWORD = Cypress.env("password");
 
+Cypress.on("uncaught:exception", (err) => {
+  // Cypress throws a NEXT_REDIRECT exception when a redirection is
+  // performed.
+  // This happens in session redirections, so this piece of code
+  // ignores it.
+  return !err.message.includes("NEXT_REDIRECT");
+});
+
 Cypress.Commands.add(
   "login",
   (username: string = USERNAME, password: string = PASSWORD) => {

@@ -1,6 +1,3 @@
-// TODO: Remove this and fix the console.errors.
-Cypress.on("uncaught:exception", () => false);
-
 describe("The Theming", () => {
   it("should change to dark theme when clicking the theme button", () => {
     // Navigate to `/`.

@@ -1,6 +1,3 @@
-// TODO: Remove this and fix the console.errors.
-Cypress.on("uncaught:exception", () => false);
-
 describe("The Home page", () => {
   it("should load successfully", () => {
     cy.visit("/");

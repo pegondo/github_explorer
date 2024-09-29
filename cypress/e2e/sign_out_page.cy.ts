@@ -1,12 +1,9 @@
-// TODO: Remove this and fix the console.errors.
-Cypress.on("uncaught:exception", () => false);
-
 describe("The Sign Out page", () => {
   it("should load successfully", () => {
     cy.visit("/sign-in");
   });
 
-  it("should redirect to / in if the user isn't logged in", () => {
+  it("should redirect to / if the user isn't logged in", () => {
     cy.visit("/sign-out");
 
     cy.location("pathname").should("eq", "/");

@@ -1,6 +1,3 @@
-// TODO: Remove this and fix the console.errors.
-Cypress.on("uncaught:exception", () => false);
-
 describe("The Profile page", () => {
   it("should load successfully if the user is logged in", () => {
     cy.login();

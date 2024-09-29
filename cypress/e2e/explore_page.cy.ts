@@ -1,4 +1,6 @@
-// TODO: Remove this and fix the console.errors.
+// The markdown inside the releases and issues bodies may throw exceptions
+// depending on the repository requested.
+// This piece of code ignores them.
 Cypress.on("uncaught:exception", () => false);
 
 describe("The Explore page", () => {

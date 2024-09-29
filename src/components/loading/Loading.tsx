@@ -34,8 +34,8 @@ const Loading = ({ tooLongToLoadTime }: Props) => {
         data-testid="loading-consider-laptop-message"
         hidden={!showConsiderLaptop}
       >
-        This page displays a lot of data, so switching to a laptop if it slows
-        down your device.
+        This page displays a lot of data, so consider switching to a laptop if
+        it slows down your device.
       </p>
     </div>
   );

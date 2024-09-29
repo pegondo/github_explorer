@@ -57,7 +57,18 @@ npm run test
 
 ### End-to-end tests
 
-To run the unit tests, you have to first run the application. You can do it with:
+To run the e2e tests, you'll first have to setup a `cypress.env.json` file with the following content:
+
+```json
+{
+  "username": "<a-valid-github-username>",
+  "password": "<the-password-for-that-username>"
+}
+```
+
+I recommend using a GitHub account only for testing purposes.
+
+Then, run the application. You can do it with:
 
 ```bash
 npm run dev
@@ -65,7 +76,7 @@ npm run dev
 
 **Note**: it is recommended by cypress to run your e2e tests using the dev mode. More info [here](https://docs.cypress.io/guides/getting-started/opening-the-app).
 
-Then, you can run the cypress client with:
+Finally, you can run the cypress client with:
 
 ```bash
 npm run cy:open
