@@ -76,7 +76,7 @@ npm run dev
 
 **Note**: it is recommended by cypress to run your e2e tests using the dev mode. More info [here](https://docs.cypress.io/guides/getting-started/opening-the-app).
 
-Finally, you can run the cypress client with:
+Finally, in another terminal, you can run the cypress client with:
 
 ```bash
 npm run cy:open
