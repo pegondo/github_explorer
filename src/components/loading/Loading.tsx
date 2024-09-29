@@ -29,14 +29,15 @@ const Loading = ({ tooLongToLoadTime }: Props) => {
       <p className="flex justify-center" data-testid="loading-message">
         Loading
       </p>
-      <p
-        className="flex justify-center"
-        data-testid="loading-consider-laptop-message"
-        hidden={!showConsiderLaptop}
-      >
-        This page displays a lot of data, so consider switching to a laptop if
-        it slows down your device.
-      </p>
+      <div hidden={!showConsiderLaptop}>
+        <p
+          className="flex justify-center"
+          data-testid="loading-consider-laptop-message"
+        >
+          This page displays a lot of data, so consider switching to a laptop if
+          it slows down your device.
+        </p>
+      </div>
     </div>
   );
 };
